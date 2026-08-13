@@ -23,6 +23,10 @@
 
     @apply text-text-light;
   }
+
+  h1 {
+    @apply text-2xl lg:text-4xl text-text-white font-bold;
+  }
 }
 
 @layer components {

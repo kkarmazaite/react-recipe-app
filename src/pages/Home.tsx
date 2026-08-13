@@ -1,7 +1,10 @@
+import HeroBanner from "../components/HeroBanner";
+
 export default function Home() {
     return (
         <>
-            Home
+            <HeroBanner />
+            <main className="container">home</main>
         </>
     )
 }

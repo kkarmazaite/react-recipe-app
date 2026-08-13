@@ -10,13 +10,11 @@ export default function App() {
    <BrowserRouter>
       <Header />
 
-      <main className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/listing" element={<Listing />} />
-          <Route path="/favourites" element={<Favourites />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/listing" element={<Listing />} />
+        <Route path="/favourites" element={<Favourites />} />
+      </Routes>
     </BrowserRouter>
   )
 }
