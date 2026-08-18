@@ -7,7 +7,7 @@ interface MealCardProps {
 
 export default function MealCard({meal}: MealCardProps) {
     return (
-        <Link className="border border-solid border-text-light rounded" to="/">
+        <Link className="border border-solid border-text-light rounded" to={`/meal/${meal.idMeal}`}>
             {   
                 meal.strMealThumb && 
                 <img className="h-37.5 w-full object-cover" src={ meal.strMealThumb } alt="React logo" />
