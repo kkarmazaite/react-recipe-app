@@ -1,14 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom"
-import { getMeal } from "../services/api";
 import type { Meal } from "../types/meal";
+import { useMeal } from "../hooks/useMeal";
 
 export default function Meal() {
     const { id } = useParams();
 
-    const [meal, setMeal] = useState<Meal|null>(null);
-    const [error, setError] = useState<string|null>(null);
-    const [loading, setLoading] = useState(true);
+    const { meal, loading, error } = useMeal(id);
 
     const mealIngredients = useMemo(() => {
         if (!meal) return [];
@@ -23,25 +21,6 @@ export default function Meal() {
 
         return list;
     }, [meal]);
-
-    useEffect(() => {
-        const loadRandomMeals = async () => {
-            if(!id) return;
-
-            try {
-                const meal = await getMeal(id);
-
-                setMeal(meal);
-            } catch (err) {
-                console.log(err);
-                setError("Failed to load meals.");
-            }finally {
-                setLoading(false);
-            }
-        }
-
-        loadRandomMeals();
-    }, [id])
 
     return (
         <main className="container py-5">

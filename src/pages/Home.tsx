@@ -1,30 +1,9 @@
-import { useEffect, useState } from "react";
 import HeroBanner from "../components/HeroBanner";
-import { getRandomMeals } from "../services/api";
-import type { Meal } from "../types/meal";
 import MealList from "../components/MealList";
+import { useRandomMeals } from "../hooks/useRandomMeals";
 
 export default function Home() {
-    const [meals, setMeals] = useState<Meal[]>([]);
-    const [error, setError] = useState<string|null>(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const loadRandomMeals = async () => {
-            try {
-                const randomMeals = await getRandomMeals(4);
-
-                setMeals(randomMeals);
-            } catch (err) {
-                console.log(err);
-                setError("Failed to load movies.");
-            }finally {
-                setLoading(false);
-            }
-        }
-
-        loadRandomMeals();
-    }, [])
+    const { meals, loading, error } = useRandomMeals(4);
 
     return (
         <>
