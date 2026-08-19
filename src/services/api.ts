@@ -1,3 +1,6 @@
+import type { Area } from "../types/area";
+import type { Category } from "../types/category";
+import type { Ingredient } from "../types/ingredient";
 import type { Meal } from "../types/meal";
 
 interface MealResponse {
@@ -29,4 +32,45 @@ export const getRandomMeals = async (count: number): Promise<Meal[]> => {
   return Promise.all(
     Array.from({ length: count }, () => getRandomMeal())
   );
+};
+
+export const searchMeals = async (query: string): Promise<Meal[]> => {
+  const data = await fetchApi<MealResponse>(`search.php?s=${encodeURIComponent(query)}`);
+  return data.meals ?? [];
+};
+
+export const getCategoryList = async (): Promise<Category[]> => {
+  const data = await fetchApi<{ meals: Category[] }>("list.php?c=list");
+  return data.meals ?? [];
+};
+
+export const getAreaList = async (): Promise<Area[]> => {
+  const data = await fetchApi<{ meals: Area[] }>("list.php?a=list");
+  return data.meals ?? [];
+};
+
+export const getIngredientList = async (): Promise<Ingredient[]> => {
+  const data = await fetchApi<{ meals: Ingredient[] }>("list.php?i=list");
+  return data.meals ?? [];
+};
+
+export const filterByCategory = async (category: string): Promise<Meal[]> => {
+  const data = await fetchApi<{ meals: Meal[] | null }>(
+    `filter.php?c=${encodeURIComponent(category)}`
+  );
+  return data.meals ?? [];
+};
+
+export const filterByArea = async (area: string): Promise<Meal[]> => {
+  const data = await fetchApi<{ meals: Meal[] | null }>(
+    `filter.php?a=${encodeURIComponent(area)}`
+  );
+  return data.meals ?? [];
+};
+
+export const filterByIngredient = async (ingredient: string): Promise<Meal[]> => {
+  const data = await fetchApi<{ meals: Meal[] | null }>(
+    `filter.php?i=${encodeURIComponent(ingredient)}`
+  );
+  return data.meals ?? [];
 };

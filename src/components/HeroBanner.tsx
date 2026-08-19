@@ -1,5 +1,10 @@
+import SearchInput from "./SearchInput";
 
-export default function HeroBanner() {
+interface HeroBannerProps {
+  handleSearch: (query: string) => void;
+}
+
+export default function HeroBanner({handleSearch} : HeroBannerProps) {
     return (
         <section
             className="h-100 bg-cover bg-center"
@@ -16,9 +21,11 @@ export default function HeroBanner() {
                         Discover Delicious Recipes
                     </h1>
 
-                    <p className="mt-4">
+                    <p className="my-4">
                         Search for recipes and find your next favourite meal
                     </p>
+
+                    <SearchInput onSearch={handleSearch} />
                 </div>
             </div>
         </section>
