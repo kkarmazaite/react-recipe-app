@@ -52,7 +52,7 @@ export default function SearchFilters({
       />
       <FilterDropdown
         label="Area"
-        options={areas.map((a) => a.strArea)}
+        options={areas}
         value={area}
         onChange={(newArea) =>
           setSearchParams(newArea ? { area: newArea } : {})

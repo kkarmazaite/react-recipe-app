@@ -3,6 +3,7 @@ import { getAreaList, getCategoryList, getIngredientList } from "../services/api
 import type { Category } from "../types/category";
 import type { Ingredient } from "../types/ingredient";
 import type { Area } from "../types/area";
+import { useMemo } from "react";
 
 export function useCategoryList() {
   const { data, loading, error } = useAsync<Category[]>(
@@ -19,7 +20,13 @@ export function useAreaList() {
     [],
     "Failed to load areas."
   );
-  return { areas: data ?? [], loading, error };
+
+  const areas = useMemo(() => {
+    const unique = new Set((data ?? []).map((a) => a.strArea));
+    return Array.from(unique).sort();
+  }, [data]);
+  
+  return { areas, loading, error };
 }
 
 export function useIngredientList() {
