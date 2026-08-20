@@ -37,7 +37,13 @@ export default function Meal() {
                     <div>
                         <h2 className="text-primary mb-5">{ meal.strMeal }</h2>
 
-                        <img className="h-75 w-full object-cover mb-3" src={ meal.strMealThumb } alt={meal.strMeal} />
+                        <img
+                            className="h-75 w-full object-cover mb-3"
+                            src={ `${meal.strMealThumb}/large` } 
+                            alt={meal.strMeal}
+                            loading="lazy"
+                            height={448}
+                        />
 
                         <div className="flex gap-3 mb-3">
                             <div className="bg-text-light text-text-dark px-2 rounded opacity-70">{ meal.strCategory }</div>

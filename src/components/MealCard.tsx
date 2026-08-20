@@ -23,7 +23,13 @@ export default function MealCard({meal}: MealCardProps) {
         <Link className="relative border border-solid border-text-light rounded" to={`/meal/${meal.idMeal}`}>
             {   
                 meal.strMealThumb && 
-                <img className="h-37.5 w-full object-cover" src={ meal.strMealThumb } alt={meal.strMeal} />
+                <img 
+                    className="h-37.5 w-full object-cover" 
+                    src={ `${meal.strMealThumb}/medium` } 
+                    alt={meal.strMeal}
+                    loading="lazy"
+                    height={231}
+                />
             }
 
             <div className="p-2 flex flex-col justify-between gap-1">
