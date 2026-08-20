@@ -39,10 +39,6 @@
   h4 {
     @apply lg:text-xl text-text-white font-bold;
   }
-
-  ul {
-    @apply list-disc list-inside;
-  }
 }
 
 @layer components {

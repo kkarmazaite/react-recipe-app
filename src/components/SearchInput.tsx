@@ -27,7 +27,7 @@ export default function SearchInput({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 rounded-l min-w-75 px-3 py-2 border border-r-0"
+        className="flex-1 rounded-l px-3 py-2 border border-r-0"
         aria-label="Search meals"
       />
       <button type="submit" className="bg-primary text-text-white px-4 rounded-r">

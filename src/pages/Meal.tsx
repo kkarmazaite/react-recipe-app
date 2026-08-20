@@ -53,7 +53,7 @@ export default function Meal() {
                         </div>
 
                         <h4 className="mb-2">Ingredients</h4>
-                        <ul>
+                        <ul className="list-disc list-inside">
                             {mealIngredients.map((mealIngredient, idx) => (
                                 <li key={idx}>{ mealIngredient }</li>
                             ))}
